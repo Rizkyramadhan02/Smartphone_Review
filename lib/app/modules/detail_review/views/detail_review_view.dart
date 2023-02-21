@@ -154,7 +154,7 @@ class DetailReviewView extends GetView<DetailReviewController> {
                 height: 25,
               ),
               Text(
-                'EXCESS',
+                'Advantages & Disadvantages',
                 style: TextStyle(
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold,

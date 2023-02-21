@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:get/get.dart';
 import 'package:smartphone_review/app/modules/detail_review/views/detail_review_view.dart';
 import 'package:smartphone_review/app/modules/profile_page/views/profile_page_view.dart';
@@ -139,10 +139,15 @@ class HomeView extends GetView<HomeController> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Center(
-                                            child: Image.network(
-                                                document['imageUrl'],
-                                                fit: BoxFit.cover,
-                                                cacheHeight: 150),
+                                            child: CachedNetworkImage(
+                                              imageUrl:
+                                                  '${document['imageUrl']}',
+                                              placeholder: (context, url) =>
+                                                  CircularProgressIndicator(),
+                                              errorWidget:
+                                                  (context, url, error) =>
+                                                      Icon(Icons.error),
+                                            ),
                                           ),
                                           SizedBox(
                                             height: 5,
